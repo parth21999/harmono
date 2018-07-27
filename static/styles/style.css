@@ -1,0 +1,27 @@
+#board{
+	position: fixed;
+    background-color: black;
+    top: 15px !important;
+	right: 30px;
+	border:3px solid grey;
+
+
+}
+
+#hidden_board{
+    display: none;
+}
+
+body{
+	background-color: rgb(10,10,10);
+}
+
+h1{
+	color: #0de898;
+	text-decoration-color: #0de898;
+}
+
+input[type=color].form-control {
+    padding: 1px;
+
+}
