@@ -2,29 +2,32 @@
 <html>
 <head>
 	<title>Harmonograph</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
-
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'styles/themes.css') }}" />
-
-
-<script type="text/javascript" src="https://cdn.rawgit.com/antimatter15/jsgif/master/NeuQuant.js"></script>
-<!-- 
-<script type="text/javascript" src="https://cdn.rawgit.com/antimatter15/jsgif/master/LZWEncoder.js"></script> -->
-<script type="text/javascript" src="https://cdn.rawgit.com/antimatter15/jsgif/master/GIFEncoder.js"></script>
-
-<script type="text/javascript" src="{{ url_for('static', filename = 'jquery.js') }}"></script>
-
-<script type="text/javascript" src="{{ url_for('static', filename = 'canvas2svg.js') }}"></script>
-
-
-<script type="text/javascript" src="{{ url_for('static', filename = 'har3.js') }}"></script>
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-
-
-<meta charset="utf-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!--  -->
+
+    <!-- CSS that I wrote -->
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+	<!--  -->
+	<!-- CSS for button icons -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+	<!-- scripts for gif encoder -->
+	<script type="text/javascript" src="https://cdn.rawgit.com/antimatter15/jsgif/master/NeuQuant.js"></script>
+	<script type="text/javascript" src="https://cdn.rawgit.com/antimatter15/jsgif/master/LZWEncoder.js"></script>
+	<script type="text/javascript" src="https://cdn.rawgit.com/antimatter15/jsgif/master/GIFEncoder.js"></script>
+	<!--  -->
+	<script type="text/javascript" src="{{ url_for('static', filename = 'jquery.js') }}"></script>
+
+	<script type="text/javascript" src="{{ url_for('static', filename = 'canvas2svg.js') }}"></script>
+	<!--  -->
+	<script type="text/javascript" src="{{ url_for('static', filename = 'harmonograph.js') }}"></script>
+	<!-- favicon -->
+	<link rel="icon" href="{{ url_for('static', filename = 'favicon.ico') }}">
 
 </head>
 <body>
@@ -33,42 +36,42 @@
 	<div class="col-2">
 		<form id="params" onsubmit="this.disabled=true;">
 		  
-		  <div class="input-group mb-3">
-		    <div class="input-group-prepend">
+		  <div class="input-group mb-3" data-toggle="tooltip" data-placement="right" title="The ratio between the frequencies of the X and Y pendula">
+		    <div class="input-group-prepend" >
 		      <span class="input-group-text">Ratio</span>
 		    </div>
 		    <input  class="form-control" type="number" id="ratio" value="2" step="0.001">
 		  </div>
 
-		  <div class="input-group mb-3">
+		  <div class="input-group mb-3" data-toggle="tooltip" data-placement="right" title="The phase difference between the X and Y pendula">
 		    <div class="input-group-prepend">
 		      <span class="input-group-text">Phase</span>
 		    </div>
 		    <input  class="form-control" type="number" id="phase" value="1" step="0.01">
 		  </div>
 
-		  <div class="input-group mb-3">
+		  <div class="input-group mb-3" data-toggle="tooltip" data-placement="right" title="The amplitude of the pendulum moving side to side">
 		    <div class="input-group-prepend">
 		      <span class="input-group-text">X amplitude</span>
 		    </div>
 		    <input  class="form-control" type="number" id="x_amp" value="350" step="10">
 		  </div>
 
-		  <div class="input-group mb-3">
+		  <div class="input-group mb-3" data-toggle="tooltip" data-placement="right" title="The amplitude of the pendulum moving top to bottom">
 		    <div class="input-group-prepend">
 		      <span class="input-group-text">Y Amplitude</span>
 		    </div>
 		    <input  class="form-control" type="number"  id="y_amp" value="350" step="10">
 		  </div>
 
-		  <div class="input-group mb-3">
+		  <div class="input-group mb-3" data-toggle="tooltip" data-placement="right" title="The speed of the rotating platform">
 		    <div class="input-group-prepend">
 		      <span class="input-group-text">Rotation</span>
 		    </div>
 		    <input  class="form-control" type="number" id="rot_speed" value="1" step="0.01">
 		  </div>
-
-		  <div class="input-group mb-3">
+		 
+		  <!-- <div class="input-group mb-3">
 		    <div class="input-group-prepend">
 		      <span class="input-group-text">X Rotation</span>
 		    </div>
@@ -81,42 +84,34 @@
 		    </div>
 		    <input  class="form-control" type="number" id="y_rot" value="1" step="0.001">
 		  </div>
-
-		  <div class="input-group mb-3">
+ -->
+		  <div class="input-group mb-3" data-toggle="tooltip" data-placement="right" title="The rate at which the pendulum slows down">
 		    <div class="input-group-prepend">
 		      <span class="input-group-text">Decay</span>
 		    </div>
 		    <input  class="form-control" type="number" id="decay" value="0.01" step="0.001">
 		  </div>
 
-		  <div class="input-group mb-3">
+		  <div class="input-group mb-3" data-toggle="tooltip" data-placement="right" title="The speed with which the pattern is made">
 		    <div class="input-group-prepend">
 		      <span class="input-group-text">Delay</span>
 		    </div>
 		    <input  class="form-control" type="number" id="delay" value="10" step="5">
 		  </div>
 
-		  <div class="input-group mb-3">
+		  <div class="input-group mb-3" data-toggle="tooltip" data-placement="right" title="The initial color of the pen">
 		    <div class="input-group-prepend" id ="color1-pre">
 		      <span class="input-group-text">Color1</span>
 		    </div>
 		    <input  class="form-control" type="color" id="color1" value="#FFFFFF"> 
 		  </div>
 
-		  <div class="input-group mb-3">
+		  <div class="input-group mb-3" data-toggle="tooltip" data-placement="right" title="The final color of the pen">
 		    <div class="input-group-prepend" id ="color2-pre">
 		      <span class="input-group-text">Color1</span>
 		    </div>
 		    <input  class="form-control" type="color" id="color2" value="#54f9c8"> 
 		  </div>
-
-
-
-		  <script type="text/javascript">
-		  	$("[type='color']").height($("#color1-pre").height());
-		  	$("[type='color']").width($("#decay").width());
-
-		  </script>
 		</form>
 
 		<div class="row">
@@ -172,7 +167,10 @@
 	<!-- Hidden Canvas to draw GIF -->
 	<canvas id="hidden_board"></canvas>
 
-
-	
+	<!-- Bootstrap scripts -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<!--  -->
 </body>
 </html>

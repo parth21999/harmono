@@ -1,15 +1,16 @@
 var interval_id = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
+  $('[data-toggle="tooltip"]').tooltip();
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelector('#play').onclick = () => {
 
         var ctx = get_ctx();
         var params = readValues();
-       // var encoder = setup_encoder();
-
-        //encoder.start();
-
         var t = 0;
 
         interval_id =  setInterval(function(){
