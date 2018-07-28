@@ -31,9 +31,11 @@
 
 </head>
 <body>
-	<h1 id="harmonograph">Harmonograph</h1>
 
 	<div class="col-2">
+		
+		<h1 class="display-2" id="harmonograph">Harmonograph</h1>
+		
 		<form id="params" onsubmit="this.disabled=true;">
 		  
 		  <div class="input-group mb-3" data-toggle="tooltip" data-placement="right" title="The ratio between the frequencies of the X and Y pendula">
@@ -122,12 +124,16 @@
 			</div>
 
 			<div class="col-sm">
-				<button id="skip" class="btn btn-dark">
-					Skip  <i class="fas fa-angle-double-right"></i>
-				</button>
+				<div class="float-right">
+					<button id="skip" class="btn btn-dark">
+						Skip  <i class="fas fa-angle-double-right"></i>
+					</button>
+				</div>
+				
 			</div>
 		</div>
-		<div class="row">
+
+		<div class="row mt-2">
 			<div class="col-md">
 				<a download="harmonograph">
 					<button id="download_button" type="submit" class="btn btn-dark btn-block">
@@ -139,7 +145,7 @@
 			</div>
 		</div>
 
-		<div class="row">
+		<div class="row mt-2">
 			<div class="col-md">
 				<button  id="gif_download_button" type="submit" class="btn btn-dark btn-block" data-toggle="button" aria-pressed="false" autocomplete="off">
 
@@ -149,19 +155,20 @@
 			</div>
 		</div>
 
-		<a download="harmonograph">
-			<button id="svg_download_button" type="submit" class="btn btn-dark btn-block">
-				Download SVG   
-				<i class="fas fa-expand"></i>
-			</button>
-		</a>
-		
+		<div class="row mt-2">
+			<div class="col-md">
+				<a download="harmonograph">
+					<button id="svg_download_button" type="submit" class="btn btn-dark btn-block">
+						Download SVG   
+						<i class="fas fa-expand"></i>
+					</button>
+				</a>	
+			</div>
+			
+		</div>
 	</div>
-
-
 	<div class="container-fluid">
 		<canvas id="board" width="830" height="830"></canvas>
-
 	</div>
 
 	<!-- Hidden Canvas to draw GIF -->
