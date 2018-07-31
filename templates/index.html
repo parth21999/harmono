@@ -34,7 +34,7 @@
 
 	<div class="col-2">
 		
-		<h1 class="display-2" id="harmonograph">Harmonograph</h1>
+		<h1 class="display-4" id="harmonograph">Harmonograph</h1>
 		
 		<form id="params">
 		  
@@ -171,8 +171,23 @@
 		</div>
 	</div>
 	<div class="container-fluid">
-		<canvas id="board" width="830" height="830"></canvas>
+		<div id="board_div">
+
+			<script>
+				var width = (0.8)*window.innerWidth;
+				var height = (0.95)*window.innerHeight;
+				var dim = Math.min(width, height);
+				var div = document.getElementById('board_div');
+				var canvas = document.createElement('canvas');
+				canvas.setAttribute("id", "board");
+				canvas.setAttribute("width", dim);
+				canvas.setAttribute("height", dim);
+				div.appendChild(canvas);
+				console.log(div.innerHTML);
+			</script>
+		</div>
 	</div>
+
 
 	<!-- Hidden Canvas to draw GIF -->
 	<canvas id="hidden_board"></canvas>

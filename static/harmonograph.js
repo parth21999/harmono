@@ -31,9 +31,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+//create canvas
+// document.addEventListener('DOMContentLoaded', create_canvas());
+
+// function create_canvas(){
+//     var width = (0.8)*window.innerWidth;
+//     var height = 0.9*window.innerHeight;
+//     var div = document.getElementById('board_div');
+//     var canvas = document.createElement('canvas');
+//     canvas.setAttribute("id", "board");
+//     canvas.setAttribute("width", width);
+//     canvas.setAttribute("height", height);
+//     div.appendChild(canvas);
+
+//     // div.innerHTML = '<canvas id="board" width ="'+width+'" height= "' + height+ '">   </canvas>';
+//     console.log(div.innerHTML);
+// }
+
 function get_ctx(){
+    var div = document.querySelector("#board_div");
     var canvas = document.querySelector("#board");
+
+
+    
+    // canvas.width = width;
+    // canvas.height = height;
+    // canvas.width = $('#board_div').innerWidth();
+    // canvas.height = $('#board_div').innerHeight();
+    // console.log("width: " + canvas.width);
+    // console.log("height: " + canvas.height);
+    alert("width: " + canvas.width + 
+          "\nheight: " + canvas.height +
+          "\nwindow width: " + window.innerWidth +
+          "\nwindow height: " + window.innerHeight);
+
     var ctx = canvas.getContext("2d");
+    // ctx.canvas.width = canvas.width;
+    // ctx.canvas.height = canvas.height;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.lineWidth = 2;
 
@@ -44,23 +78,23 @@ function get_ctx(){
     return ctx;
 }
 
-function fix_dpi() {
-    //get DPI
-    let dpi = window.devicePixelRatio;
-    //get canvas
-    let canvas = document.getElementById('board');
-    //get context
-    let ctx = canvas.getContext('2d');
-    //get CSS height
-    //the + prefix casts it to an integer
-    //the slice method gets rid of "px"
-    let style_height = +getComputedStyle(canvas).getPropertyValue("height").slice(0, -2);
-    //get CSS width
-    let style_width = +getComputedStyle(canvas).getPropertyValue("width").slice(0, -2);
-    //scale the canvas
-    canvas.setAttribute('height', style_height * dpi);
-    canvas.setAttribute('width', style_width * dpi);
-}
+// function fix_dpi() {
+//     //get DPI
+//     let dpi = window.devicePixelRatio;
+//     //get canvas
+//     let canvas = document.getElementById('board');
+//     //get context
+//     let ctx = canvas.getContext('2d');
+//     //get CSS height
+//     //the + prefix casts it to an integer
+//     //the slice method gets rid of "px"
+//     let style_height = +getComputedStyle(canvas).getPropertyValue("height").slice(0, -2);
+//     //get CSS width
+//     let style_width = +getComputedStyle(canvas).getPropertyValue("width").slice(0, -2);
+//     //scale the canvas
+//     canvas.setAttribute('height', style_height * dpi);
+//     canvas.setAttribute('width', style_width * dpi);
+// }
 
 function readValues(){
 
@@ -141,7 +175,7 @@ function getColor(t, params){
     let g2 = params.color2[1];
     let b2 = params.color2[2];
 
-    var color_change_rate = 20;
+    var color_change_rate = 15;
 
     var r = (r1 + ((r2 - r1)/color_change_rate)*t);
     var g = (g1 + ((g2 - g1)/color_change_rate)*t);
