@@ -60,10 +60,10 @@ function get_ctx(){
     // canvas.height = $('#board_div').innerHeight();
     // console.log("width: " + canvas.width);
     // console.log("height: " + canvas.height);
-    alert("width: " + canvas.width + 
-          "\nheight: " + canvas.height +
-          "\nwindow width: " + window.innerWidth +
-          "\nwindow height: " + window.innerHeight);
+    // alert("width: " + canvas.width + 
+    //       "\nheight: " + canvas.height +
+    //       "\nwindow width: " + window.innerWidth +
+    //       "\nwindow height: " + window.innerHeight);
 
     var ctx = canvas.getContext("2d");
     // ctx.canvas.width = canvas.width;
